@@ -43,6 +43,6 @@ describe 'cis::windows::account_policies::lockout' do
       }
     end
 
-    it { is_expected.to compile.and_raise_error(/$lockout_duration must be less than or equal to $lockout_reset_time/) }
+    it { is_expected.to compile.and_raise_error(%r{\$lockout_duration must be less than or equal to \$lockout_reset_time}) }
   end
 end

@@ -10,7 +10,18 @@
 # @param password_reversible_encryption Determine if passwords are stored with reversible encryption.
 #
 # @example
-# include cis::windows::account_policies::passwords
+#   With defaults as per the Standard
+#   include cis::windows::account_policies::passwords
+#
+#   If you need to change the settings then you should exclude this class from `cis::windows`:
+#   class { 'cis::windows':
+#     excluded_classes => ['cis::windows::account_policies::passwords'],
+#   }
+#
+#   Then set the parameters as requried for this class:
+#   class { 'cis::windows::account_policies::passwords':
+#     password_history => 50,
+#   }
 #
 class cis::windows::account_policies::passwords (
   Variant[Integer[24], Boolean[true]] $password_history     = 24,
@@ -29,7 +40,7 @@ class cis::windows::account_policies::passwords (
   if $password_history != true {
     local_security_policy { 'Enforce password history':
       ensure       => present,
-      policy_value => $password_history,
+      policy_value => String($password_history),
     }
   }
 
@@ -37,7 +48,7 @@ class cis::windows::account_policies::passwords (
   if $password_history != true {
     local_security_policy { 'Maximum password age':
       ensure       => present,
-      policy_value => $password_max_age,
+      policy_value => String($password_max_age),
     }
   }
 
@@ -45,7 +56,7 @@ class cis::windows::account_policies::passwords (
   if $password_history != true {
     local_security_policy { 'Minimum password age':
       ensure       => present,
-      policy_value => $password_min_age,
+      policy_value => String($password_min_age),
     }
   }
 
@@ -53,7 +64,7 @@ class cis::windows::account_policies::passwords (
   if $password_history != true {
     local_security_policy { 'Minimum password length':
       ensure       => present,
-      policy_value => $password_min_length,
+      policy_value => String($password_min_length),
     }
   }
 
@@ -61,7 +72,7 @@ class cis::windows::account_policies::passwords (
   if $password_history != true {
     local_security_policy { 'Password must meet complexity requirements':
       ensure       => present,
-      policy_value => $password_complexity,
+      policy_value => String($password_complexity),
     }
   }
 
@@ -69,7 +80,7 @@ class cis::windows::account_policies::passwords (
   if $password_history != true {
     local_security_policy { 'Store passwords using reversible encryption':
       ensure       => present,
-      policy_value => $password_reversible_encryption,
+      policy_value => String($password_reversible_encryption),
     }
   }
 }
