@@ -36,13 +36,13 @@ describe 'cis::windows::account_policies::passwords' do
     it do
       is_expected.to contain_local_security_policy('Password must meet complexity requirements').with(
         'ensure'          => 'present',
-        'policy_value'    => true,
+        'policy_value'    => 'Enabled',
       )
     end
     it do
       is_expected.to contain_local_security_policy('Store passwords using reversible encryption').with(
         'ensure'          => 'present',
-        'policy_value'    => false,
+        'policy_value'    => 'Disabled',
       )
     end
   end
