@@ -4,8 +4,8 @@
 # @param 
 #
 class cis::windows::security_options::accounts (
-  String $admin_account_name,
-  String $guest_account_name,
+  Cis::String_false $admin_account_name,
+  Cis::String_false $guest_account_name,
   Cis::Enabled_disabled $accounts_admin_account_status      = 'Disabled',
   Cis::Block_accounts $block_ms_accounts                    = "Users can't add or log on with Microsoft accounts",
   Cis::Enabled_disabled $accounts_guest_account_status      = 'Disabled',
