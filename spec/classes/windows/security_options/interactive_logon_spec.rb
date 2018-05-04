@@ -14,7 +14,9 @@ describe 'cis::windows::security_options::interactive_logon' do
   end
 
   context 'all defaults' do
-		it do is_expected.to contain_class('cis::windows::security_options::interactive_logon') end
+		it do
+      is_expected.to contain_class('cis::windows::security_options::interactive_logon')
+    end
 		it do
       is_expected.to contain_local_security_policy('Interactive logon: Do not display last user name').with(
         'ensure'          => 'present',

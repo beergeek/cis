@@ -8,8 +8,8 @@ class cis::windows::security_options::domain_member (
   Cis::Enabled_disabled $require_strong_session_key       = 'Enabled',
 ) {
 
-  if $::os['family'] != 'windows' {
-    fail("This class is only for Windows, not for ${::os['family']}")
+  if $facts['os']['family'] != 'windows' {
+    fail("This class is only for Windows, not for ${facts['os']['family']}")
   }
 
   # CIS 2.3.6.1

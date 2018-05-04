@@ -8,7 +8,9 @@ describe 'cis::windows::account_policies::passwords' do
       }
     end
 
-    it do is_expected.to contain_class('cis::windows::account_policies::passwords') end
+    it do
+      is_expected.to contain_class('cis::windows::account_policies::passwords')
+    end
     it do
       is_expected.to contain_local_security_policy('Enforce password history').with(
         'ensure'          => 'present',

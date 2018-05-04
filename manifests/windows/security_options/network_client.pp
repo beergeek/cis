@@ -5,8 +5,8 @@ class cis::windows::security_options::network_client (
   Cis::Enabled_disabled $send_unencrypted_password_smb  = 'Disabled',
 ) {
 
-  if $::os['family'] != 'windows' {
-    fail("This class is only for Windows, not for ${::os['family']}")
+  if $facts['os']['family'] != 'windows' {
+    fail("This class is only for Windows, not for ${facts['os']['family']}")
   }
 
   # CIS 2.3.8.1

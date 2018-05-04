@@ -14,8 +14,8 @@ class cis::windows::security_options::accounts (
   Cis::Enabled_disabled $shutdown_failed_log_sec_audits     = 'Disabled',
 ) {
 
-  if $::os['family'] != 'windows' {
-    fail("This class is only for Windows, not for ${::os['family']}")
+  if $facts['os']['family'] != 'windows' {
+    fail("This class is only for Windows, not for ${facts['os']['family']}")
   }
 
   # CIS 2.3.1.1

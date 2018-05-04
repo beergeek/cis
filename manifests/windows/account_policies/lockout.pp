@@ -26,8 +26,8 @@ class cis::windows::account_policies::lockout (
   Variant[Integer[15], Boolean[false]] $lockout_reset_time          = 15,
 ) {
 
-  if $::os['family'] != 'windows' {
-    fail("This class is only for Windows, not for ${::os['family']}")
+  if $facts['os']['family'] != 'windows' {
+    fail("This class is only for Windows, not for ${facts['os']['family']}")
   }
 
   # CIS 1.2.1

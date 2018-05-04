@@ -8,7 +8,9 @@ describe 'cis::windows::security_options::domain_controller' do
   end
 
   context 'all defaults' do
-		it do is_expected.to contain_class('cis::windows::security_options::domain_controller') end
+		it do
+      is_expected.to contain_class('cis::windows::security_options::domain_controller')
+    end
 		it do
       is_expected.to contain_local_security_policy('Domain controller: Allow server operators to schedule tasks').with(
         'ensure'          => 'present',

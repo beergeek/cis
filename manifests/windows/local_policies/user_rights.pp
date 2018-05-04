@@ -105,8 +105,8 @@ class cis::windows::local_policies::user_rights (
   Cis::Array_false $own_files_and_objects          = ['Administrators'],
 ) {
 
-  if $::os['family'] != 'windows' {
-    fail("This class is only for Windows, not for ${::os['family']}")
+  if $facts['os']['family'] != 'windows' {
+    fail("This class is only for Windows, not for ${facts['os']['family']}")
   }
 
   if $is_domain_controller == true {

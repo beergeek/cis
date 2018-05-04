@@ -8,7 +8,9 @@ describe 'cis::windows::security_options::domain_member' do
   end
 
   context 'all defaults' do
-		it do is_expected.to contain_class('cis::windows::security_options::domain_member') end
+		it do
+      is_expected.to contain_class('cis::windows::security_options::domain_member')
+    end
 		it do
       is_expected.to contain_local_security_policy('Domain member: Digitally encrypt or sign secure channel data (always)').with(
         'ensure'          => 'present',

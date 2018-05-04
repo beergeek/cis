@@ -13,8 +13,8 @@ class cis::windows::security_options::interactive_logon (
   Cis::Smartcard_options $smartcard_remove_behaviour    = 'Lock Workstation',
 ) {
 
-  if $::os['family'] != 'windows' {
-    fail("This class is only for Windows, not for ${::os['family']}")
+  if $facts['os']['family'] != 'windows' {
+    fail("This class is only for Windows, not for ${facts['os']['family']}")
   }
 
   # CIS 2.3.7.1

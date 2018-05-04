@@ -8,7 +8,9 @@ describe 'cis::windows::account_policies::lockout' do
       }
     end
 
-    it do is_expected.to contain_class('cis::windows::account_policies::lockout') end
+    it do
+      is_expected.to contain_class('cis::windows::account_policies::lockout')
+    end
     it do
       is_expected.to contain_local_security_policy('Account lockout duration').with(
         'ensure'          => 'present',

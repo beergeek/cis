@@ -14,7 +14,9 @@ describe 'cis::windows::security_options::accounts' do
   end
 
   context 'all defaults' do
-		it do is_expected.to contain_class('cis::windows::security_options::accounts') end
+		it do
+      is_expected.to contain_class('cis::windows::security_options::accounts')
+    end
 		it do
       is_expected.to contain_local_security_policy('Accounts: Administrator account status').with(
         'ensure'          => 'present',

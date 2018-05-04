@@ -8,7 +8,9 @@ describe 'cis::windows::security_options::network_server' do
   end
 
   context 'all defaults' do
-		it do is_expected.to contain_class('cis::windows::security_options::network_server') end
+		it do
+      is_expected.to contain_class('cis::windows::security_options::network_server')
+    end
 		it do
       is_expected.to contain_local_security_policy('Microsoft network server: Amount of idle time required before suspending session').with(
         'ensure'          => 'present',

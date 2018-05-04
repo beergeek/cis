@@ -8,7 +8,9 @@ describe 'cis::windows::local_policies::user_rights' do
   end
 
   context 'all defaults' do
-    it do is_expected.to contain_class('cis::windows::local_policies::user_rights') end
+    it do
+      is_expected.to contain_class('cis::windows::local_policies::user_rights')
+    end
     it do
       is_expected.to contain_local_security_policy('Access Credential Manager as a trusted caller').with(
         'ensure'          => 'present',
@@ -178,7 +180,7 @@ describe 'cis::windows::local_policies::user_rights' do
       )
     end
     it do
-      is_expected.to_not contain_local_security_policy('Log on as a batch job')
+      is_expected.not_to contain_local_security_policy('Log on as a batch job')
     end
     it do
       is_expected.to contain_local_security_policy('Manage auditing and security log').with(
@@ -251,9 +253,9 @@ describe 'cis::windows::local_policies::user_rights' do
   context 'Some different params' do
     let :params do
       {
-        profile_sys_perf: ['Administrators','Brett', 'Dylan', 'Jesse'],
+        profile_sys_perf: %w[Administrators Brett Dylan Jesse],
         replace_proc_lvl_token: ['LOCAL SERVICE', 'NETWORK SERVICE', 'Sanvy', 'DA', 'Simon'],
-        restore_files_dirs: ['Administrators', 'KW', 'Andrew', 'James'],
+        restore_files_dirs: %w[Administrators KW Andrew James],
       }
     end
 
@@ -303,7 +305,7 @@ describe 'cis::windows::local_policies::user_rights' do
       )
     end
     it do
-      is_expected.to_not contain_local_security_policy('Log on as a batch job')
+      is_expected.not_to contain_local_security_policy('Log on as a batch job')
     end
     it do
       is_expected.to contain_local_security_policy('Deny access to this computer from the network').with(
@@ -323,7 +325,7 @@ describe 'cis::windows::local_policies::user_rights' do
     let :params do
       {
         is_domain_controller: true,
-        enable_level_2: true
+        enable_level_2: true,
       }
     end
 

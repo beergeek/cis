@@ -8,7 +8,9 @@ describe 'cis::windows::security_options::network_client' do
   end
 
   context 'all defaults' do
-		it do is_expected.to contain_class('cis::windows::security_options::network_client') end
+		it do
+      is_expected.to contain_class('cis::windows::security_options::network_client')
+    end
 		it do
       is_expected.to contain_local_security_policy('Microsoft network client: Digitally sign communications (always)').with(
         'ensure'          => 'present',
